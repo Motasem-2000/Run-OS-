@@ -1,0 +1,8 @@
+project: Run-OS (CapsuleOS)
+timestamp: 20260906T142656Z
+git_branch: HEAD
+git_short_sha: 87e979e457
+buildroot_dir: /home/bujazar/buildroot
+defconfig: /home/bujazar/run-os/configs/capsuleos_defconfig (exists: yes)
+BR2_DL_DIR: /home/bujazar/.cache/buildroot-dl
+build_jobs: 4

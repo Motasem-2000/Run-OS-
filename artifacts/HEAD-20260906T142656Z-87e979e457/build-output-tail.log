@@ -1,0 +1,200 @@
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/po'
+Making all in docs
+make[3]: Entering directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/docs'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/docs'
+Making all in util/bash-completion.d
+make[3]: Entering directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/util/bash-completion.d'
+../../config.status --file=grub:../../../util/bash-completion.d/grub-completion.bash.in
+config.status: creating grub
+make[3]: Leaving directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/util/bash-completion.d'
+make[2]: Leaving directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc'
+make[1]: Leaving directory '/home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc'
+[7m>>> grub2 2.12 Installing to images directory[27m
+[7m>>> grub2 2.12 Installing i386-pc to images directory[27m
+mkdir -p /home/bujazar/buildroot/output/images/
+/home/bujazar/buildroot/output/host/bin/grub-mkimage -d /home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/grub-core/ -O i386-pc -o /home/bujazar/buildroot/output/images/grub.img -p "(hd0,msdos1)/boot/grub"  boot linux ext2 fat squash4 part_msdos part_gpt normal biosdisk
+/usr/bin/install -D -m 0644 boot/grub2/grub.cfg /home/bujazar/buildroot/output/target/boot/grub/grub.cfg
+cat /home/bujazar/buildroot/output/build/grub2-2.12/build-i386-pc/grub-core/cdboot.img /home/bujazar/buildroot/output/images/grub.img > /home/bujazar/buildroot/output/images/grub-eltorito.img
+[7m>>> linux 6.6.18 Extracting[27m
+xzcat /home/bujazar/.cache/buildroot-dl/linux/linux-6.6.18.tar.xz | tar --strip-components=1 -C /home/bujazar/buildroot/output/build/linux-6.6.18   -xf -
+[7m>>> linux 6.6.18 Patching[27m
+for p in  ; do if test -d $p ; then PATH=/home/bujazar/buildroot/output/host/bin:$PATH support/scripts/apply-patches.sh  /home/bujazar/buildroot/output/build/linux-6.6.18 $p \*.patch || exit 1 ; else PATH=/home/bujazar/buildroot/output/host/bin:$PATH support/scripts/apply-patches.sh  /home/bujazar/buildroot/output/build/linux-6.6.18 `dirname $p` `basename $p` || exit 1; fi done
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+Using /home/bujazar/buildroot/output/build/linux-6.6.18/.config as base
+#
+# merged configuration written to /home/bujazar/buildroot/output/build/linux-6.6.18/.config (needs make)
+#
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+#
+# No change to .config
+#
+make[1]: Leaving directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+[7m>>> linux 6.6.18 Updating kernel config with fixups[27m
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+[7m>>> linux 6.6.18 Configuring[27m
+[7m>>> linux 6.6.18 Building[27m
+GIT_DIR=. PATH="/home/bujazar/buildroot/output/host/bin:/home/bujazar/buildroot/output/host/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/snap/bin" PKG_CONFIG="/home/bujazar/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/bujazar/buildroot/output/host/lib/pkgconfig:/home/bujazar/buildroot/output/host/share/pkgconfig" BR_BINARIES_DIR=/home/bujazar/buildroot/output/images KCFLAGS=-Wno-attribute-alias /usr/bin/make  HOSTCC="/usr/bin/gcc -O2 -isystem /home/bujazar/buildroot/output/host/include -L/home/bujazar/buildroot/output/host/lib -Wl,-rpath,/home/bujazar/buildroot/output/host/lib" ARCH=x86_64 INSTALL_MOD_PATH=/home/bujazar/buildroot/output/target CROSS_COMPILE="/home/bujazar/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-" WERROR=0 REGENERATE_PARSERS=1 DEPMOD=/home/bujazar/buildroot/output/host/sbin/depmod INSTALL_MOD_STRIP=1 -C /home/bujazar/buildroot/output/build/linux-6.6.18 all
+make[1]: Entering directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+  SYNC    include/config/auto.conf.cmd
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+  WRAP    arch/x86/include/generated/uapi/asm/bpf_perf_event.h
+  WRAP    arch/x86/include/generated/uapi/asm/errno.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_32.h
+  GEN     arch/x86/include/generated/asm/orc_hash.h
+  WRAP    arch/x86/include/generated/uapi/asm/fcntl.h
+  WRAP    arch/x86/include/generated/uapi/asm/ioctl.h
+  WRAP    arch/x86/include/generated/uapi/asm/ioctls.h
+  WRAP    arch/x86/include/generated/uapi/asm/ipcbuf.h
+  WRAP    arch/x86/include/generated/uapi/asm/param.h
+  WRAP    arch/x86/include/generated/uapi/asm/poll.h
+  WRAP    arch/x86/include/generated/uapi/asm/resource.h
+  WRAP    arch/x86/include/generated/uapi/asm/socket.h
+  WRAP    arch/x86/include/generated/uapi/asm/sockios.h
+  WRAP    arch/x86/include/generated/uapi/asm/termbits.h
+  WRAP    arch/x86/include/generated/uapi/asm/termios.h
+  WRAP    arch/x86/include/generated/uapi/asm/types.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_64.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_x32.h
+  HOSTCC  arch/x86/tools/relocs_32.o
+  SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_32_ia32.h
+  UPD     include/config/kernel.release
+  SYSHDR  arch/x86/include/generated/asm/unistd_64_x32.h
+  WRAP    arch/x86/include/generated/asm/early_ioremap.h
+  WRAP    arch/x86/include/generated/asm/export.h
+  WRAP    arch/x86/include/generated/asm/mcs_spinlock.h
+  WRAP    arch/x86/include/generated/asm/irq_regs.h
+  WRAP    arch/x86/include/generated/asm/kmap_size.h
+  WRAP    arch/x86/include/generated/asm/local64.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_64.h
+  WRAP    arch/x86/include/generated/asm/mmiowb.h
+  WRAP    arch/x86/include/generated/asm/module.lds.h
+  WRAP    arch/x86/include/generated/asm/rwonce.h
+  WRAP    arch/x86/include/generated/asm/unaligned.h
+  HOSTCC  arch/x86/tools/relocs_64.o
+  HOSTCC  arch/x86/tools/relocs_common.o
+  UPD     include/generated/uapi/linux/version.h
+  UPD     include/generated/utsrelease.h
+  UPD     include/generated/compile.h
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  DESCEND objtool
+<stdin>:1:10: fatal error: libelf.h: No such file or directory
+compilation terminated.
+  HOSTCC  /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/fixdep.o
+  HOSTCC  scripts/kallsyms
+  HOSTCC  scripts/selinux/mdp/mdp
+  HOSTLD  /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/fixdep-in.o
+  LINK    /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/fixdep
+  HOSTLD  arch/x86/tools/relocs
+  HOSTCC  scripts/sorttable
+  HOSTCC  scripts/asn1_compiler
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/exec-cmd.o
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/help.o
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/pager.o
+  INSTALL /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/include/subcmd/exec-cmd.h
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/parse-options.o
+  INSTALL /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/include/subcmd/help.h
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/run-command.o
+  INSTALL /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/include/subcmd/pager.h
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/sigchain.o
+  INSTALL /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/include/subcmd/parse-options.h
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/subcmd-config.o
+  INSTALL /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/include/subcmd/run-command.h
+  INSTALL libsubcmd_headers
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  CC      scripts/mod/devicetable-offsets.s
+  UPD     scripts/mod/devicetable-offsets.h
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTCC  scripts/mod/sumversion.o
+  LD      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/libsubcmd-in.o
+  AR      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/libsubcmd/libsubcmd.a
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/weak.o
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/special.o
+In file included from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/objtool.h:13,
+                 from weak.c:10:
+/home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/elf.h:10:10: fatal error: gelf.h: No such file or directory
+   10 | #include <gelf.h>
+      |          ^~~~~~~~
+compilation terminated.
+make[5]: *** [/home/bujazar/buildroot/output/build/linux-6.6.18/tools/build/Makefile.build:98: /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/weak.o] Error 1
+  MKDIR   /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/lib/
+make[5]: *** Waiting for unfinished jobs....
+  GEN     /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/lib/inat-tables.c
+  CC      /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/decode.o
+In file included from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/objtool.h:13,
+                 from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/arch.h:11,
+                 from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/check.h:11,
+                 from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/special.h:10,
+                 from arch/x86/special.c:4:
+/home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/elf.h:10:10: fatal error: gelf.h: No such file or directory
+   10 | #include <gelf.h>
+      |          ^~~~~~~~
+compilation terminated.
+make[6]: *** [/home/bujazar/buildroot/output/build/linux-6.6.18/tools/build/Makefile.build:98: /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/special.o] Error 1
+make[6]: *** Waiting for unfinished jobs....
+In file included from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/objtool.h:13,
+                 from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/arch.h:11,
+                 from /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/check.h:11,
+                 from arch/x86/decode.c:18:
+/home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/include/objtool/elf.h:10:10: fatal error: gelf.h: No such file or directory
+   10 | #include <gelf.h>
+      |          ^~~~~~~~
+compilation terminated.
+make[6]: *** [/home/bujazar/buildroot/output/build/linux-6.6.18/tools/build/Makefile.build:98: /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/arch/x86/decode.o] Error 1
+make[5]: *** [/home/bujazar/buildroot/output/build/linux-6.6.18/tools/build/Makefile.build:150: arch/x86] Error 2
+make[4]: *** [Makefile:66: /home/bujazar/buildroot/output/build/linux-6.6.18/tools/objtool/objtool-in.o] Error 2
+make[3]: *** [Makefile:73: objtool] Error 2
+make[2]: *** [/home/bujazar/buildroot/output/build/linux-6.6.18/Makefile:1355: tools/objtool] Error 2
+make[2]: *** Waiting for unfinished jobs....
+  HOSTLD  scripts/mod/modpost
+  CC      kernel/bounds.s
+  CHKSHA1 include/linux/atomic/atomic-arch-fallback.h
+  CHKSHA1 include/linux/atomic/atomic-instrumented.h
+  UPD     include/generated/timeconst.h
+  CHKSHA1 include/linux/atomic/atomic-long.h
+  UPD     include/generated/bounds.h
+  CC      arch/x86/kernel/asm-offsets.s
+  UPD     include/generated/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+make[1]: *** [Makefile:234: __sub-make] Error 2
+make[1]: Leaving directory '/home/bujazar/buildroot/output/build/linux-6.6.18'
+make: *** [package/pkg-generic.mk:283: /home/bujazar/buildroot/output/build/linux-6.6.18/.stamp_built] Error 2

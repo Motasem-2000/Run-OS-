@@ -23,6 +23,8 @@ sudo apt update && sudo apt install -y build-essential git wget cpio unzip rsync
 
 **معيار القبول**: كل الأوامر تنتهي بلا أخطاء `E:`.
 
+**Status:** ✅ Done — completed on Ubuntu 22.04 (WSL2), gcc-11. See branch `tasks/0-1-setup`.
+
 ---
 
 ## المهمة 1: تحميل Buildroot وتوليد أول تهيئة
@@ -47,6 +49,10 @@ make
 
 **معيار القبول**: يظهر ملف `output/images/*.iso` بعد انتهاء البناء (قد يأخذ 20-40 دقيقة أول مرة).
 
+**Status:** ✅ Done — `rootfs.iso9660` (18.9MB), `bzImage`, and `initrd` were produced successfully. `configs/capsuleos_defconfig` saved for reproducibility.
+
+**Known Issue:** Booting GRUB directly from `rootfs.iso9660` via `-cdrom` does not currently work — GRUB stops at the `grub>` prompt with `error: unknown filesystem`, even after manually loading the `iso9660` module and confirming all required files exist at correct paths inside the image (verified via `mount -o loop`). Likely cause: a compatibility issue between the El Torito bootable ISO layout produced and GRUB 2.12. **This does not block progress**, since booting the kernel directly (`-kernel bzImage -initrd rootfs.cpio`) works fully and satisfies Task 2's acceptance criterion. Left as a separate follow-up investigation.
+
 ---
 
 ## المهمة 2: اختبار الإقلاع في QEMU
@@ -58,6 +64,8 @@ qemu-system-x86_64 -cdrom output/images/rootfs.iso9660 -m 512
 **معيار القبول**: يظهر shell قابل للكتابة فيه داخل نافذة QEMU. هذا أول دليل ملموس أن "نظام تشغيل" حقيقي، ولو بدائي، يعمل.
 
 **إذا فشل**: انسخ رسالة الخطأ كاملة، لا تخمّن الحل. راجع سجل QEMU (`-serial stdio` لإظهار مخرجات أوضح).
+
+**Status:** ✅ Done — verified via `qemu-system-x86_64 -kernel bzImage -initrd rootfs.cpio -append "console=ttyS0" -m 512 -nographic`. Reached `buildroot login:`, logged in as `root`, and ran commands (`uname -a`, `whoami`, `ls /`) successfully. The `-cdrom`/GRUB boot path has a separate documented issue under Task 1 above.
 
 ---
 

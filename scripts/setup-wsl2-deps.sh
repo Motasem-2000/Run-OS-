@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "==> تحديث قائمة الحزم وتثبيت الأدوات الأساسية لـ Buildroot وQEMU"
+echo "Updating APT and installing host build dependencies for Buildroot + kernel build..."
 sudo apt update
-sudo apt install -y build-essential git wget cpio unzip rsync bc \
-  libncurses-dev libssl-dev qemu-system-x86 qemu-utils
-echo "==> تحقق من وجود الأدوات المهمة"
-echo -n "git: " && git --version
-echo -n "make: " && make --version | head -n1
-echo -n "qemu: " && qemu-system-x86_64 --version | head -n1
-echo "==> انتهى تثبيت الحزم. تأكد من تشغيل هذا السكربت داخل WSL2 Ubuntu 22.04."
+sudo apt install -y \
+  build-essential git wget cpio unzip rsync bc \
+  libncurses-dev libssl-dev qemu-system-x86 qemu-utils \
+  pkg-config libelf-dev libdw-dev liblzma-dev zlib1g-dev \
+  libgmp-dev libmpc-dev libmpfr-dev libunistring-dev \
+  xorriso grub-pc-bin
+sudo apt install -y curl jq python3-pip
+echo "Done. Checking package installation status..."
+dpkg -l libelf-dev libdw-dev liblzma-dev zlib1g-dev libgmp-dev libmpc-dev libmpfr-dev libunistring-dev xorriso grub-pc-bin || true
+echo "If any package above is missing, fix apt sources or install manually."
